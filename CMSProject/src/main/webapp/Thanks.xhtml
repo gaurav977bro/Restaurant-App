@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+
+<h:head>
+<style>
+.row {
+  width: 100%;
+   display: flex; 
+  flex-direction: row;
+   
+}
+.block {
+
+	
+  padding-left: 30px;
+  padding-top: 50px;
+  width: 400px;
+}
+
+
+/* .header {
+	height: 50px;
+	margin-top: 60px;
+	margin-left: 100px;
+	width: 500px;
+	box-shadow: 2px 2px 2px 2px darkGrey;
+	background-color: white;
+	border-radius: 20px 1px 20px 1px;
+} */
+
+.paths {
+	width: 100%;
+	height: 200px;
+	box-shadow: 2px 2px 2px 2px darkGrey;
+}
+</style>
+
+</h:head>
+
+
+<h:body>
+
+	<div class="header">
+		<br /> <br />
+		<h:outputText value="Account created successfully."
+			style="padding-left: 50px; padding-top:50px; font-size: 30px; text-shadow:1px 1px 1px darkGrey;"></h:outputText>
+
+	</div>
+	<hr></hr>
+	<br />
+	<div class="paths">
+		<h:form>
+			<div class="row">
+				<div class="block">
+					<h:outputLink value="CustomerLogin.xhtml" style="font-size:30px;">Customer Login</h:outputLink>
+				</div>
+				&nbsp;&nbsp;&nbsp;
+				<div class="block">
+					<h:outputLink value="#" style="font-size:30px;">Vendor Login</h:outputLink>
+				</div>
+				&nbsp;&nbsp;&nbsp;
+				<div class="block">
+					<h:outputLink value="#" style="font-size:30px;">Show Customers Login</h:outputLink>
+				</div>
+				&nbsp;&nbsp;&nbsp;
+			</div>
+		</h:form>
+
+	</div>
+
+</h:body>
+
+</html>
+
+<!-- <div class="box">
+				<span class="ui-float-label"> </span>
+				<p:password id="password" value="#{customer.cusPassword}"
+					required="true" requiredMessage="Please enter password"></p:password>
+					<p:outputLabel for="@previous" value="Password"></p:outputLabel>
+					<h:message for="password" style="color:red;"/>
+
+			</div> -->

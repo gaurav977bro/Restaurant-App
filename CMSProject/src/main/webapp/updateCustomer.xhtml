@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+		crossorigin="anonymous"></link>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+		crossorigin="anonymous"></script>
+	<style>
+label {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 18px;
+	color: #333;
+	height: 20px;
+	 width: 200px; 
+	margin-top: 10px;
+	margin-left: 10px;
+	text-align: right;
+	clear: both;
+}
+
+input {
+	width: 300px;
+	margin-top: 20px;
+	float: left;
+	margin-top: 20px;
+}
+
+.update {
+margin-top:30px;
+	width: 600px;
+}
+
+.nameBox {
+	display: flex;
+}
+
+.box {
+	margin-bottome: 30px;
+	margin-left: 50px;
+}
+
+.box1 {
+	margin-bottom: 30px;
+}
+
+.button {
+	padding-left: 260px;
+}
+</style>
+</h:head>
+
+<h:body>
+	<ui:include src="CommonNavbar.xhtml"></ui:include>
+	<div class="update">
+		<h:form>
+			<!-- for name -->
+			<div class="nameBox">
+				<div class="box1">
+
+					<h:outputLabel value="Name" for="name" />
+
+				</div>
+
+				<div class="box">
+
+					<p:inputText id="cusname" value="#{customerInfo.cusName}"
+						required="true" requiredMessage="Please enter valid name">
+						<f:validator
+							validatorId="com.java.validations.CustomerNameValidation" />
+					</p:inputText>
+					<br />
+					<h:message for="cusname" style="color:red;" />
+				</div>
+			</div>
+
+			<!-- for usrname -->
+
+			<div class="nameBox">
+				<div class="box1">
+
+					<h:outputLabel value="Change userame" for="username" />
+
+				</div>
+
+				<div class="box">
+
+					<p:inputText value="#{customerInfo.cusUsername}" />
+				</div>
+			</div>
+
+			<!-- for number -->
+			<div class="nameBox">
+				<div class="box1">
+
+					<h:outputLabel value="Number" for="number" />
+
+				</div>
+
+				<div class="box">
+
+					<p:inputText value="#{customerInfo.cusPhone}" id="cusnumber"
+						required="true"
+						requiredMessage="please enter a valid phone number">
+						<f:validator
+							validatorId="com.java.validations.PhoneNumberValidation" />
+					</p:inputText>
+					<br />
+					<h:message for="cusnumber" style="color:red;" />
+				</div>
+			</div>
+
+			<!-- for email -->
+			<div class="nameBox">
+				<div class="box1">
+
+					<h:outputLabel value="email" for="email" />
+
+				</div>
+
+				<div class="box">
+
+					<p:inputText value="#{customerInfo.cusEmail}" />
+				</div>
+			</div>
+			<div class="button">
+				<h:commandButton style="width:100px; height:40px;  color:white;"
+					class="btn btn-primary"
+					action="#{customerDAO.updateCustomer(customerInfo)}" value="Update" />
+			</div>
+		</h:form>
+
+	</div>
+</h:body>
+
+</html>

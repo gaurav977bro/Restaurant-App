@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<style>
+.v {
+	width: 250px;
+	text-align: right;
+	font-weight: bold;
+	padding-left: 2opx;
+	margin-left: 20px;
+	clear: both;
+	font-size: 18px;
+	color: #8a2be2;
+	text-shadow: 1px 1px 1px darkgrey;
+}
+
+.label1 {
+	width: 200px;
+	float: right;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px darkGrey;
+	margin-right: 20% px;
+}
+
+.contents {
+	margin-top: -30px;
+	margin-left: 15%;
+	margin-right: 15%;
+	margin-bottom: 100px;
+	box-shadow: 4px 4px 4px 4px darkgrey;
+	border-radius: 10px 10px 10px 10px;
+	
+}
+
+.header {
+	text-align: center;
+}
+</style>
+</h:head>
+
+<h:body>
+	<ui:include src="CustomerMenu.xhtml"></ui:include>
+	<div class="cartForm">
+		<h:form>
+			 
+	
+				<h:form>
+
+
+
+					<br />
+
+					<div class="contents">
+					<br/>
+					
+						<h:outputText class="v" value="Menu id:" />
+						<h:outputLabel class="label1" value="#{menuInfo.menuId}" />
+
+						<br /> <br />
+						<h:outputText class="v" value="Item name:" />
+						<h:outputLabel class="label1" value="#{menuInfo.menuItem}" />
+
+						<br /> <br />
+						<h:outputText class="v" value="Calories:" />
+						<h:outputLabel class="label1" value="#{menuInfo.calories}" />
+
+						<br /> <br />
+						<h:outputText class="v" value="Veg / non-veg:" />
+						<h:outputLabel class="label1" value="#{menuInfo.menuSpeciality}" />
+						<br /> <br />
+
+
+
+						<h:outputText class="v" value="Price:" />
+						<h:outputLabel class="label1" value="#{menuInfo.menuPrice}" />
+						<br /> <br />
+
+						<div class="label1" style="margin-right: 15%;">
+							<h:panelGrid columns="4">
+								<h:outputText style="color:red; margin-right:20px;"
+									value="Quantity: " />
+
+								<h:commandButton class="btn btn-danger"
+									style="margin-right:10px;" value="-"
+									action="#{quantityModifier.decrement()}" />
+
+								<p:outputLabel value="#{quantityModifier.number}" />
+								<h:commandButton class="btn btn-danger"
+									style="margin-left:10px;" value="+"
+									action="#{quantityModifier.increment}"></h:commandButton>
+
+							</h:panelGrid>
+						</div>
+						<br /> <br />
+						<div style="text-align: center; font-weight: bold;">
+						<h:outputText value="Total: #{cal.calculate(menuInfo.menuPrice, quantityModifier.number)}"/>
+						</div><hr />
+
+
+
+						<div class="bt" style="text-align: center;">
+							
+							<h:commandButton   
+								style="width:180px; height:50px;  text-shadow:2px 2px 2px black;"
+								action="#{cartDAO.addToCart(cart)}"
+								value="Add"
+								styleClass="btn btn-danger" />
+						</div>
+
+
+						<br /> <br />
+					</div>
+
+				</h:form>
+
+			 
+
+		</h:form>
+	</div>
+</h:body>
+
+
+</html>

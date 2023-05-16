@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>Add new Provider</title>
+
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+		crossorigin="anonymous"></link>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+		crossorigin="anonymous"></script>
+	<style>
+	
+.box {
+	border-radius: 10px 10px 10px 10px;
+	margin-bottom:50px;
+	margin-left: 25%;
+	margin-right: 25%;
+	box-shadow: 3px 4px 4px 2px darkGrey;
+	background-color: white;
+}
+
+.child {
+	 text-shadow: 1px 1px 1px LIGHTGREY;
+	 font-weight: bold;
+	 color: CHARCOAL;
+	display: inline-block;
+	vertical-align: middle;
+}
+.submit{
+
+box-shodow:2px 2px 2px darkGrey;
+text-alin:center;
+margin-left:32%;
+margin-top:20px;
+margin-bottom:30px;
+
+}
+
+</style>
+
+</h:head>
+
+<h:body style="background-color: #F7FFFE;">
+	<ui:include src="CustomerMenu.xhtml"></ui:include>
+
+	<div class="box">
+		<h:form>
+		<br/>
+			<div class="heading" style="text-align: center;">
+
+				<h1 style="text-weight: bold; font-family: san-serif; text-decoration:blink;  text-shadow: 1px 1px 1px darkGrey;">Password
+					reset</h1>
+			</div>
+
+			
+			<hr />
+			<Br />
+
+			<div class="username">
+				<!-- USERNAME -->
+				<div class="child" style="width: 30%; text-align: right;">
+					<h:outputText value="Username:"></h:outputText>
+				</div>
+				<div class="child">
+					<p:inputText value="#{customerInfo.cusUsername}" disabled="true" />
+				</div>
+
+			</div>
+			<br />
+			<div class="username">
+				<!-- OLD PASSWORD -->
+				<div class="child" style="width: 30%; text-align: right;">
+					<h:outputText value="Old password:"></h:outputText>
+				</div>
+				<div class="child">
+					<p:inputText id="oldpassword" styleClass="label1" size="40"
+						required="true" requiredMessage="Please fill" label="Old password">
+						<f:validator
+							validatorId="com.java.validations.OldPasswordValidation"></f:validator>
+
+					</p:inputText><br/>
+					<h:message for="oldpassword" style="color:red;padding-top: 10px;  " />
+				</div>
+
+			</div>
+
+			<br />
+			<div class="username">
+				<!-- NEW PASSWORD -->
+				<div class="child" style="width: 30%; text-align: right;">
+					<h:outputText value="New password:"></h:outputText>
+				</div>
+				<div class="child">
+					<p:password id="password" match="confirmpassword" required="true"
+						 size="40" feedback="true" label="New password" inline="true"
+						requiredMessage="Please enter new password"
+						value="#{customerDAO.newPassword}">
+						<f:validator validatorId="com.java.validations.PasswordValidation" />
+ 					</p:password><br/>
+					<h:message for="password"
+						style="color:red;" />
+				</div>
+
+			</div>
+
+			<br />
+			<div class="username">
+				<!-- CONFIRM NEW PASSWORD -->
+				<div class="child" style="width: 30%; text-align: right;">
+					<h:outputText value="Confirm new password:"></h:outputText>
+				</div>
+				<div class="child">
+					<p:password id="confirmpassword" styleClass="label1" size="40"
+						feedback="true" required="true" inline="true"
+						requiredMessage="Please confirm new password"
+						label="Confirm password" /><br/>
+					<div><h:message for="confirmpassword" style="color:red;"></h:message></div>	
+				</div>
+
+			</div>
+
+			<div class="submit">
+
+				<h:commandButton id="button1"
+					style="width:100px; height:40px;     text-shadow:2px 2px 2px black;"
+					action="#{customerDAO.changePassword(customerInfo, customerDAO.newPassword)}"
+					value="Confirm" class="btn btn-danger" />
+
+			</div><br/>
+			
+		</h:form>
+	</div>
+
+
+</h:body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+	</h:head>
+	
+	<h:body>
+	<div>
+	<p:dataTable
+			value="#{wDAO.showWalletsForCustomer(customerInfo.cusId)}"
+			var="e" navigator="true" styleClass="employeeTable"
+			headerClass="employeeTableHeader"
+			rowClasses="employeeTableOddRow,employeeTableEvenRow">
+			
+			<p:column headerText="Customer name">
+				<h:outputText value="#{customerInfo.cusUsername}" />
+
+			</p:column>
+			
+			<p:column headerText="Customer Id">
+				<h:outputText value="#{e.custId}" />
+
+			</p:column>
+			<p:column headerText="Wallet Id">
+				<h:outputText value="#{e.walletId}" />
+
+			</p:column>
+			<p:column headerText="Wallet Source">
+				<h:outputText value="#{e.walletSource}" />
+
+			</p:column>
+			<p:column headerText="Wallet Amount">
+				<h:outputText value="#{e.walletAmount}" />
+
+			</p:column>
+			
+			<p:column headerText="Add Amount">
+				<h:commandButton class="btn btn-primary" action="#" value="Add Money" />
+
+			</p:column>
+
+
+		</p:dataTable>
+	</div>
+	</h:body>
+	
+	</html>

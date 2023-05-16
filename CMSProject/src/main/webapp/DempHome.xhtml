@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+	<style>
+	.res1 {
+	width: auto;
+	margin-left: 10px;
+	margin-right: 20px;
+	margin-bottom: 30px;
+	background-color: white;
+	height: 200px;
+	box-shadow: 4px 4px 4px darkgrey;
+	border-radius: 5px 5px 5px 5px;
+}
+	
+	</style></h:head>
+
+<h:body>
+
+	<h:form>
+		<p:dataTable var="e" value="#{customerDAO.showCustomer()}"
+			paginator="true" rows="10"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink}
+                     {PreviousPageLink} {PageLinks} {NextPageLink}
+                     {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+			<p:column>
+				<div class="res1">
+
+					<div class="row"></div>
+
+				</div>
+			</p:column>
+
+
+
+
+
+
+		</p:dataTable>
+		<br />
+		<h:commandButton action="AddProvider" value="Add" />
+	</h:form>
+</h:body>
+
+</html>
